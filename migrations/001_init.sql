@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS requests (
+    id SERIAL PRIMARY KEY,
+    method VARCHAR(10) NOT NULL,
+    path VARCHAR(255) NOT NULL,
+    timestamp TIMESTAMP NOT NULL
+);
