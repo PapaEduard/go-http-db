@@ -1,4 +1,5 @@
 Мини-проект Go project
+
 Дано приложение на golang https://github.com/AnastasiyaGapochkina01/go-http-db, которое реализует простой HTTP-сервер с записью и просмотром истории запросов в PostgreSQL.
 
 Необходимо организовать для него devops-конвейер:
