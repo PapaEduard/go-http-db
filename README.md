@@ -5,14 +5,14 @@
 Необходимо организовать для него devops-конвейер:
 
 1.Запустить в docker:
-  делать multistage сборку
-  публиковать собранный image в docker hub
-  у БД должен быть healthcheck
-  деплой осуществлять с помощью docker compose, который должен содержать сервисы
-    приложение
-    nginx (в роли reverse proxy)
-    postgres
-    migrator
+  1.1 делать multistage сборку
+  1.2 публиковать собранный image в docker hub
+  1.3 у БД должен быть healthcheck
+  1.4 деплой осуществлять с помощью docker compose, который должен содержать сервисы
+    ~ приложение
+    ~ nginx (в роли reverse proxy)
+    ~ postgres
+    ~ migrator
   migrator:
   image: postgres:15
   restart: on-failure
@@ -22,11 +22,13 @@
     - ./migrations:/migrations
   command: >
     sh -c "while ! pg_isready -h db -U postgres; do sleep 1; done && psql -h db -U postgres -d app_db -f /migrations/001_init.sql"
+    
 2.CI/CD:
-  pipeline должен содержать этапы
-    linter (для файлов приложения, файлов docker)
-    build
-    сканирование на уязвимости image
-    test (запуск всей инфраструктуры любым способом и простой запрос curl http://$host:8080/hello)
-    deploy
+  2.1 pipeline должен содержать этапы
+    ~ linter (для файлов приложения, файлов docker)
+    ~ build
+    ~ сканирование на уязвимости image
+    ~ test (запуск всей инфраструктуры любым способом и простой запрос curl http://$host:8080/hello)
+    ~ deploy
+    
 3.Написать bash-скрипт для резервного копирования базы данных
