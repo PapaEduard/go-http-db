@@ -11,4 +11,4 @@ FROM alpine:3.18
 WORKDIR /app
 COPY --from=builder /app/server .
 EXPOSE 8080
-CMD ["./server"]
+ENTRYPOINT ["./server"]
