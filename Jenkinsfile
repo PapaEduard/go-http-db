@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        IMAGE_NAME = 'yourdockerhubusername/go-http-db'
+        IMAGE_NAME = 'edy2010/go_htp/go-http-db'
         DOCKERHUB_CREDENTIALS = credentials('dockerhub') // Добавьте эти креды в Jenkins
     }
     stages {
